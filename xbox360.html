@@ -31,15 +31,15 @@
         /* --- CABEÇALHO --- */
         header {
             background-color: var(--white);
-            padding: 1rem 2rem; /* Reduzi levemente o padding vertical para alinhar melhor */
+            padding: 1rem 2rem; 
             display: flex;
-            justify-content: space-between;
+            justify-content: space-between; /* Mantém logo na esq e busca na dir */
             align-items: center;
             box-shadow: var(--shadow);
             position: sticky;
             top: 0;
             z-index: 100;
-            gap: 20px; /* Espaço entre a logo e a barra */
+            gap: 20px; 
         }
 
         .logo {
@@ -51,7 +51,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            flex-shrink: 0; /* Impede que a logo encolha */
+            flex-shrink: 0; 
         }
 
         .logo span {
@@ -61,7 +61,7 @@
         /* --- HERO SECTION --- */
         .hero {
             text-align: center;
-            padding: 3rem 2rem; /* Ajustado pois a busca saiu daqui */
+            padding: 3rem 2rem; 
             background: linear-gradient(135deg, var(--white) 0%, var(--bg-color) 100%);
         }
 
@@ -71,18 +71,17 @@
             color: var(--dark-blue);
         }
 
-        /* --- SEARCH BOX (AGORA NO HEADER) --- */
+        /* --- SEARCH BOX --- */
         .search-box {
             max-width: 600px;
-            width: 100%;       /* Para ocupar o espaço disponível */
+            width: 100%;       
             display: flex;
             gap: 10px;
-            /* margin: 0 auto;  <- REMOVIDO (não queremos mais centralizar na página) */
         }
 
         input[type="text"] {
             flex: 1;
-            padding: 10px 15px; /* Ajustei levemente o padding para caber melhor no header */
+            padding: 10px 15px; 
             border: 2px solid var(--primary-blue);
             border-radius: 50px;
             font-size: 1rem;
@@ -188,7 +187,7 @@
             color: var(--gray);
         }
         
-        /* Ajuste para telas pequenas: joga a busca para baixo da logo se faltar espaço */
+        /* Ajuste para telas pequenas */
         @media (max-width: 600px) {
             header {
                 flex-direction: column;
@@ -201,7 +200,13 @@
 <body>
 
     <header>
-        <a href="index.html"><div class="logo"><img src="img/retroromslogo.png" height="100" width="100%" alt="LOGO"></a> <span></span> </div> <div class="search-box"></a>
+        <a href="index.html" style="text-decoration: none;">
+            <div class="logo">
+                <img src="img/retroromslogo.png" height="100" alt="LOGO">
+            </div>
+        </a> 
+        
+        <div class="search-box">
             <input type="text" id="searchInput" placeholder="Pesquise por nome (ex: Mario, Sonic, Zelda...)">
         </div>
     </header>
@@ -209,10 +214,8 @@
     <section class="hero">
         <h1>Encontre seus clássicos favoritos</h1>
         <p style="margin-bottom: 0; color: #666;">Milhares de ROMs seguras para baixar e se divertir</p>
-        </section>
+    </section>
         
-           
-
     <div class="container">
         <h2 class="section-title">Jogos Principais</h2>
         
@@ -306,8 +309,6 @@
                     <a href="xbox360(8).html" class="download-btn">Download</a>
                 </div>
             </div>           
-            
-
             
         </div>
     </div>
