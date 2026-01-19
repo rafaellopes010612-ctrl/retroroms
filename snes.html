@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RetroRoms - PS2</title>
+    <style>
+        /* --- VARIÁVEIS DE COR --- */
+        :root {
+            --primary-blue: #4FC3F7; /* Azul Claro Principal */
+            --dark-blue: #0277BD;    /* Azul mais escuro para texto/contraste */
+            --bg-color: #E1F5FE;     /* Fundo muito claro */
+            --white: #FFFFFF;
+            --gray: #757575;
+            --shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        /* --- RESET GERAL --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--dark-blue);
+        }
+
+        /* --- CABEÇALHO --- */
+        header {
+            background-color: var(--white);
+            padding: 1rem 2rem; /* Reduzi levemente o padding vertical para alinhar melhor */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            gap: 20px; /* Espaço entre a logo e a barra */
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0; /* Impede que a logo encolha */
+        }
+
+        .logo span {
+            color: var(--dark-blue);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            text-align: center;
+            padding: 3rem 2rem; /* Ajustado pois a busca saiu daqui */
+            background: linear-gradient(135deg, var(--white) 0%, var(--bg-color) 100%);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-blue);
+        }
+
+        /* --- SEARCH BOX (AGORA NO HEADER) --- */
+        .search-box {
+            max-width: 600px;
+            width: 100%;       /* Para ocupar o espaço disponível */
+            display: flex;
+            gap: 10px;
+            /* margin: 0 auto;  <- REMOVIDO (não queremos mais centralizar na página) */
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 10px 15px; /* Ajustei levemente o padding para caber melhor no header */
+            border: 2px solid var(--primary-blue);
+            border-radius: 50px;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        /* --- GRID DE JOGOS --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section-title {
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+            border-left: 5px solid var(--primary-blue);
+            padding-left: 10px;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        /* --- CARD DO JOGO --- */
+        .game-card {
+            background-color: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(79, 195, 247, 0.3);
+        }
+
+        .game-image {
+            height: 180px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-size: 3rem;
+        }
+
+        .game-info {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .game-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-blue);
+        }
+
+        .game-console {
+            font-size: 0.8rem;
+            color: var(--white);
+            background-color: var(--primary-blue);
+            padding: 4px 10px;
+            border-radius: 20px;
+            align-self: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .download-btn {
+            margin-top: auto;
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            text-align: center;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .download-btn:hover {
+            background-color: var(--dark-blue);
+        }
+
+        /* --- RODAPÉ --- */
+        footer {
+            background-color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+            border-top: 1px solid #eee;
+            color: var(--gray);
+        }
+        
+        /* Ajuste para telas pequenas: joga a busca para baixo da logo se faltar espaço */
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+        <header>
+        <a href="index.html" style="text-decoration: none;">
+            <div class="logo">
+                <img src="img/retroromslogo.png" height="100" alt="LOGO">
+            </div>
+        </a> 
+        
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Pesquise por nome (ex: Mario, Sonic, Zelda...)">
+        </div>
+        </header>
+
+    <section class="hero">
+        <h1>Encontre seus clássicos favoritos</h1>
+        <p style="margin-bottom: 0; color: #666;">Milhares de ROMs seguras para baixar e se divertir</p>
+        </section>
+        <div class="main-container">
+        <div class="breadcrumb">
+            
+
+    <div class="container">
+        <h2 class="section-title">Consoles Principais</h2>
+        
+        <div class="games-grid" id="gamesContainer">
+            
+            <div class="game-card">
+                <img src="img/oplcapa.png" alt="">
+                <div class="game-info">
+                    <span class="game-console">SONY</span>
+                    <a href="desbloqueios(1).html" style="text-decoration: none;">
+                        <h3 class="game-title">Open Ps2 Loader (OPL) v.2077</h3>
+                    </a>
+                    <p style="font-size: 0.9rem; color: #777; margin-bottom: 10px;">Jogos do icônico console da Sony.</p>
+                    <a href="desbloqueios(1).html" class="download-btn">Download</a>
+                </div>
+            </div>
+                        
+
+
+            
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 RetroRoms. Feito para melhorar sua gameplay.</p>
+    </footer>
+
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const cards = document.querySelectorAll('.game-card');
+
+        searchInput.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+
+            cards.forEach(card => {
+                const title = card.querySelector('.game-title').textContent.toLowerCase();
+                if (title.includes(term)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
